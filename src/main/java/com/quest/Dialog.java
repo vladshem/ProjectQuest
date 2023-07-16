@@ -13,9 +13,7 @@ public class Dialog {
     // Наименование второго переключателя
     private String secondLabel;
 
-
-    // Список дочерних диалогов    // Признак победы
-    //    private boolean isWin;
+    // Список дочерних диалогов
     private List<Dialog> dialogChildList = new ArrayList<>();
 
     // Признак последнего диалога
