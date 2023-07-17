@@ -15,14 +15,15 @@ public class ReloadServlet extends HttpServlet {
         // Получаем текущий диалог из сессии
         Dialog dialog = extractDialog(currentSession);
 
-        // Получаем результат выбора radio button в диалоге
-        int radioOption = Integer.parseInt(request.getParameter("flexRadio"));
-
         // Получим дочерний диалог
         if (!dialog.isLeaf()) {
-            Dialog childDialog = dialog.getDialogChildList().get(radioOption);
-            // Установим новый диалог игрока в сессию
-            currentSession.setAttribute("dialogInfo", childDialog);
+            // Получаем результат выбора radio button в диалоге
+            Integer radioOption = Integer.parseInt(request.getParameter("flexRadio"));
+            if (radioOption != null) {
+                Dialog childDialog = dialog.getDialogChildList().get(radioOption);
+                // Установим новый диалог игрока в сессию
+                currentSession.setAttribute("dialogInfo", childDialog);
+            }
         }
 
         // Перенаправление запроса на страницу index.jsp через сервер

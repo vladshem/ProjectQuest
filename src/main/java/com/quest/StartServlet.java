@@ -18,11 +18,17 @@ public class StartServlet extends HttpServlet {
         // Получаем имя игрока из запроса
         String namePlayer = request.getParameter("namePlayer");
 
-        // Добавление в сессию IP адреса
-        currentSession.setAttribute("address", request.getRemoteAddr());
+        if (namePlayer == null || namePlayer.isEmpty()) {
+            // Если имя игрока не задано, возвращаем на исходную страницу
+            response.sendRedirect("/prologue.html");
+            return;
+        }
 
         // Добавляем имя игрока в сессию
         currentSession.setAttribute("namePlayer", namePlayer);
+
+        // Добавление в сессию IP адреса
+        currentSession.setAttribute("address", request.getRemoteAddr());
 
         // Получим количество сыгранных игр из сессии
         Integer countGames = (Integer) currentSession.getAttribute("countGames");
