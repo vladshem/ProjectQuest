@@ -13,7 +13,7 @@
     <c:otherwise>
         <form method="get" action="reload">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadio" id="flexRadio1" value="0">
+                <input class="form-check-input" type="radio" name="flexRadio" id="flexRadio1" value="0" checked>
                 <label class="form-check-label" for="flexRadio1">${dialogInfo.getFirstLabel()}</label>
             </div>
             <div class="form-check">
